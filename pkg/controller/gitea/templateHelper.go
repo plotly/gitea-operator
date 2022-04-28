@@ -8,28 +8,11 @@ import (
 	"os"
 	"text/template"
 
-	integreatlyv1alpha1 "github.com/integr8ly/gitea-operator/pkg/apis/integreatly/v1alpha1"
+	integreatlyv1alpha1 "github.com/plotly/gitea-operator/pkg/apis/integreatly/v1alpha1"
+	constvalue "github.com/plotly/gitea-operator/pkg/controller/gitea/const"
 )
 
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-
-const (
-	GiteaImage              = "quay.io/plotly/gitea-gitea"
-	GiteaVersion            = "1.15.5-rootless-rootless"
-	GiteaConfigName         = "gitea-config"
-	GiteaDeploymentName     = "gitea"
-	GiteaIngressName        = "gitea-ingress"
-	GiteaPgDeploymentName   = "postgres"
-	GiteaPgPvcName          = "gitea-postgres-pvc"
-	GiteaPgServiceName      = "gitea-postgresql"
-	GiteaReposPvcName       = "gitea-repos"
-	GiteaServiceAccountName = "gitea-service-account"
-	GiteaServiceName        = "gitea-http"
-	GiteaServiceSshName     = "gitea-ssh"          // added by TB
-	GiteaInitSecretName     = "gitea-init"         // added by TB
-	GiteaAdminSecretName    = "gitea-admin-secret" // added by TB
-
-)
 
 func generateToken(n int) string {
 	b := make([]rune, n)
@@ -89,18 +72,18 @@ type GiteaTemplateHelper struct {
 // by the user in the custom resource
 func newTemplateHelper(cr *integreatlyv1alpha1.Gitea) *GiteaTemplateHelper {
 	param := GiteaParameters{
-		GiteaConfigName:         GiteaConfigName,
-		GiteaDeploymentName:     GiteaDeploymentName,
-		GiteaIngressName:        GiteaIngressName,
-		GiteaPgDeploymentName:   GiteaPgDeploymentName,
-		GiteaPgPvcName:          GiteaPgPvcName,
-		GiteaPgServiceName:      GiteaPgServiceName,
-		GiteaReposPvcName:       GiteaReposPvcName,
-		GiteaServiceAccountName: GiteaServiceAccountName,
-		GiteaServiceName:        GiteaServiceName,
-		GiteaServiceSshName:     GiteaServiceSshName,
-		GiteaInitSecretName:     GiteaInitSecretName,  // added by TB
-		GiteaAdminSecretName:    GiteaAdminSecretName, // added by TB
+		GiteaConfigName:         constvalue.GiteaConfigName,
+		GiteaDeploymentName:     constvalue.GiteaDeploymentName,
+		GiteaIngressName:        constvalue.GiteaIngressName,
+		GiteaPgDeploymentName:   constvalue.GiteaPgDeploymentName,
+		GiteaPgPvcName:          constvalue.GiteaPgPvcName,
+		GiteaPgServiceName:      constvalue.GiteaPgServiceName,
+		GiteaReposPvcName:       constvalue.GiteaReposPvcName,
+		GiteaServiceAccountName: constvalue.GiteaServiceAccountName,
+		GiteaServiceName:        constvalue.GiteaServiceName,
+		GiteaServiceSshName:     constvalue.GiteaServiceSshName,
+		GiteaInitSecretName:     constvalue.GiteaInitSecretName,  // added by TB
+		GiteaAdminSecretName:    constvalue.GiteaAdminSecretName, // added by TB
 		ApplicationNamespace:    cr.Namespace,
 		ApplicationName:         "gitea",
 		Hostname:                cr.Spec.Hostname,
@@ -114,8 +97,8 @@ func newTemplateHelper(cr *integreatlyv1alpha1.Gitea) *GiteaTemplateHelper {
 		InstallLock:             true,
 		GiteaInternalToken:      generateToken(105),
 		GiteaSecretKey:          generateToken(10),
-		GiteaImage:              GiteaImage,
-		GiteaVersion:            GiteaVersion,
+		GiteaImage:              constvalue.GiteaImage,
+		GiteaVersion:            constvalue.GiteaVersion,
 		// TODO change those value for production
 		GiteaVolumeCapacity: "1Gi",
 		DbVolumeCapacity:    "1Gi",
