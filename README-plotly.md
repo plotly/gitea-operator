@@ -9,22 +9,54 @@ See this file with the information : [pkg/apis/integreatly/v1alpha1/register.go]
 ## Tags information 
 
 Version v0.0.6 == containe the build version 
-Version v0.0.6.1 == is the same but with the fix for the controller-runtime, I did it to be able to do `go get github.com/plotly/gitea-operator@v0.0.6.1`
+Version v0.0.6-1 == is the same but with the fix for the controller-runtime, I did it to be able to do `go get github.com/plotly/gitea-operator@v0.0.6-1`
 
 ## What the operator provide 
 
-TODO
+* Secrets : 
+    * admin-core-secret
+    * gitea-init
+    * gitea-admin-secret
+    * gitea-config
+
+* Deployment : 
+    * postgres
+    * gitea
+
+* pvc : 
+    * gitea-postgres-pvc
+    * gitea-repos
+
+* Service : 
+    * gitea-postgresql   ClusterIP   10.43.57.158   <none>        5432/TCP
+    * gitea-http         ClusterIP   None           <none>        3000/TCP
+    * gitea-ssh          ClusterIP   None           <none>        22/TCP
+
+* ingress :
+    * gitea-ingress
+
+
+## Operator object configuration
+
+```
+apiVersion: integreatly.org/v1alpha1
+kind: Gitea
+metadata:
+  name: gitea-cluster
+spec:
+  hostname: "example.dash.surf"
+```
 
 ## Setup Dev Env
 
 To setup your dev env you can use those cmd : 
 
 ```sh
-$ make dockerBuildEnd/build
-$ make dockerBuildEnd/run
+$ make dockerBuildEnv/build
+$ make dockerBuildEnv/run
 ```
 
-The `dockerBuildEnd/run` will mount local directory in the POD : 
+The `dockerBuildEnv/run` will mount local directory in the POD : 
 * \$PWD:/go/src/github.com/integr8ly/gitea-operator"  : The code of the operator
 * \${HOME}/.kube:/root/.kube"  : your Kubernetes configuration to be able to run the operator on the cluster
 * "/var/run/docker.sock:/var/run/docker.sock" : To be able to build the docker image

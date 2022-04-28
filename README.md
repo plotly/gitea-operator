@@ -10,6 +10,8 @@
 An Operator that installs Gitea. Installation is performed by creating a custom resource of kind `Gitea`. You can uninstall Gitea by removing this resource.
 The Operator will also watch all Gitea resources and reinstall them if they are deleted.
 
+please have a look on : [./README-plotly.md](./README-plotly.md)
+
 ## Installing the Operator 
 
 First we need to create a Service Account, Role and Role Binding in order to grant the required permissions to the Operator. The `install` target of the Makefile will take care of this. Make sure you are logged in with a user that has permission to create those resources.
