@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	apis "github.com/integr8ly/gitea-operator/pkg/apis"
-	giteav1alpha1 "github.com/integr8ly/gitea-operator/pkg/apis/integreatly/v1alpha1"
+	apis "github.com/plotly/gitea-operator/pkg/apis"
+	giteav1alpha1 "github.com/plotly/gitea-operator/pkg/apis/integreatly/v1alpha1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	framework "github.com/operator-framework/operator-sdk/pkg/test"

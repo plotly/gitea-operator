@@ -5,10 +5,10 @@ import (
 	"log"
 	"runtime"
 
-	"github.com/integr8ly/gitea-operator/pkg/apis"
-	"github.com/integr8ly/gitea-operator/pkg/controller"
 	k8sutil "github.com/operator-framework/operator-sdk/pkg/util/k8sutil"
 	sdkVersion "github.com/operator-framework/operator-sdk/version"
+	"github.com/plotly/gitea-operator/pkg/apis"
+	"github.com/plotly/gitea-operator/pkg/controller"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	"math/rand"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
