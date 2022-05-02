@@ -2,6 +2,7 @@ package gitea
 
 import (
 	integreatlyv1alpha1 "github.com/plotly/gitea-operator/pkg/apis/integreatly/v1alpha1"
+	giteactrl "github.com/plotly/gitea-operator/pkg/controller/gitea"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -17,13 +18,13 @@ var MockCR = integreatlyv1alpha1.Gitea{
 }
 
 var Templates = []string{
-	GiteaServiceAccountName,
-	GiteaConfigName,
-	GiteaPgPvcName,
-	GiteaReposPvcName,
-	GiteaDeploymentName,
-	GiteaIngressName,
-	GiteaServiceName,
-	GiteaPgDeploymentName,
-	GiteaPgServiceName,
+	giteactrl.GiteaServiceAccountName,
+	giteactrl.GiteaConfigName,
+	giteactrl.GiteaPgPvcName,
+	giteactrl.GiteaReposPvcName,
+	giteactrl.GiteaDeploymentName,
+	giteactrl.GiteaIngressName,
+	giteactrl.GiteaServiceName,
+	giteactrl.GiteaPgDeploymentName,
+	giteactrl.GiteaPgServiceName,
 }
