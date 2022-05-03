@@ -15,15 +15,3 @@ var MockCR = integreatlyv1alpha1.Gitea{
 		Hostname: "gitea.example.com",
 	},
 }
-
-var Templates = []string{
-	GiteaServiceAccountName,
-	GiteaConfigName,
-	GiteaPgPvcName,
-	GiteaReposPvcName,
-	GiteaDeploymentName,
-	GiteaIngressName,
-	GiteaServiceName,
-	GiteaPgDeploymentName,
-	GiteaPgServiceName,
-}

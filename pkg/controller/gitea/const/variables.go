@@ -1,4 +1,4 @@
-package gitea
+package constants
 
 const (
 	GiteaImage              = "quay.io/plotly/gitea-gitea"

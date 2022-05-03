@@ -3,58 +3,55 @@ module github.com/plotly/gitea-operator
 go 1.17
 
 require (
-	cloud.google.com/go v0.31.0
-	github.com/PuerkitoBio/purell v1.1.0
-	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
-	github.com/davecgh/go-spew v1.1.1
-	github.com/emicklei/go-restful v2.8.0+incompatible
 	github.com/ghodss/yaml v1.0.0
-	github.com/go-logr/logr v0.1.0
-	github.com/go-logr/zapr v0.1.0
-	github.com/go-openapi/jsonpointer v0.17.1
-	github.com/go-openapi/jsonreference v0.17.1
-	github.com/go-openapi/spec v0.17.1
-	github.com/go-openapi/swag v0.17.1
-	github.com/gogo/protobuf v1.1.1
-	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
-	github.com/golang/groupcache v0.0.0-20180924190550-6f2cf27854a4
-	github.com/golang/protobuf v1.2.0
-	github.com/google/btree v1.0.0
-	github.com/google/gofuzz v0.0.0-20170612174753-24818f796faf
-	github.com/google/uuid v1.0.0
-	github.com/googleapis/gnostic v0.2.0
-	github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7
-	github.com/hashicorp/golang-lru v0.5.0
-	github.com/imdario/mergo v0.3.6
-	github.com/json-iterator/go v1.1.5
-	github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329
-	github.com/mattbaird/jsonpatch v0.0.0-20171005235357-81af80346b1a
-	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
-	github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742
-	github.com/operator-framework/operator-sdk v0.1.1
-	github.com/pborman/uuid v0.0.0-20180906182336-adf5a7427709
-	github.com/petar/GoLLRB v0.0.0-20130427215148-53be0d36a84c
-	github.com/peterbourgon/diskv v2.0.1+incompatible
-	github.com/spf13/pflag v1.0.3
-	go.uber.org/atomic v1.3.2
-	go.uber.org/multierr v1.1.0
-	go.uber.org/zap v1.9.1
-	golang.org/x/crypto v0.0.0-20181015023909-0c41d7ab0a0e
-	golang.org/x/net v0.0.0-20181023162649-9b4f9f5ad519
-	golang.org/x/oauth2 v0.0.0-20181017192945-9dcd33a902f4
-	golang.org/x/sys v0.0.0-20181023152157-44b849a8bc13
-	golang.org/x/text v0.3.0
-	golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
-	golang.org/x/tools v0.0.0-20181023010539-40a48ad93fbe
-	google.golang.org/appengine v1.2.0
-	gopkg.in/inf.v0 v0.9.1
-	gopkg.in/yaml.v2 v2.2.1
-	k8s.io/api v0.0.0-20180712090710-2d6f90ab1293
-	k8s.io/apiextensions-apiserver v0.0.0-20180808065829-408db4a50408
-	k8s.io/apimachinery v0.0.0-20180621070125-103fd098999d
-	k8s.io/client-go v0.0.0-20180806134042-1f13a808da65
-	k8s.io/code-generator v0.0.0-20180621065459-6702109cc68e
-	k8s.io/gengo v0.0.0-20181019081622-7338e4bfd691
-	k8s.io/kube-openapi v0.0.0-20181024003938-96e8bb74ecdd
-	sigs.k8s.io/controller-runtime v0.1.4
+	github.com/operator-framework/operator-sdk v0.19.4
+	k8s.io/api v0.18.2
+	k8s.io/apimachinery v0.18.2
+	k8s.io/client-go v12.0.0+incompatible
+	sigs.k8s.io/controller-runtime v0.6.0
+)
+
+require (
+	cloud.google.com/go v0.49.0 // indirect
+	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/cespare/xxhash/v2 v2.1.1 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/evanphx/json-patch v4.5.0+incompatible // indirect
+	github.com/go-logr/logr v0.1.0 // indirect
+	github.com/gogo/protobuf v1.3.1 // indirect
+	github.com/golang/groupcache v0.0.0-20191027212112-611e8accdfc9 // indirect
+	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/google/go-cmp v0.5.0 // indirect
+	github.com/google/gofuzz v1.1.0 // indirect
+	github.com/google/uuid v1.1.1 // indirect
+	github.com/googleapis/gnostic v0.3.1 // indirect
+	github.com/hashicorp/golang-lru v0.5.3 // indirect
+	github.com/imdario/mergo v0.3.8 // indirect
+	github.com/json-iterator/go v1.1.9 // indirect
+	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+	github.com/prometheus/client_golang v1.5.1 // indirect
+	github.com/prometheus/client_model v0.2.0 // indirect
+	github.com/prometheus/common v0.9.1 // indirect
+	github.com/prometheus/procfs v0.0.8 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
+	golang.org/x/net v0.0.0-20200625001655-4c5254603344 // indirect
+	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45 // indirect
+	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
+	golang.org/x/text v0.3.3 // indirect
+	golang.org/x/time v0.0.0-20191024005414-555d28b269f0 // indirect
+	gomodules.xyz/jsonpatch/v2 v2.0.1 // indirect
+	google.golang.org/appengine v1.6.5 // indirect
+	google.golang.org/protobuf v1.25.0 // indirect
+	gopkg.in/fsnotify.v1 v1.4.7 // indirect
+	gopkg.in/inf.v0 v0.9.1 // indirect
+	gopkg.in/yaml.v2 v2.2.8 // indirect
+	k8s.io/klog v1.0.0 // indirect
+	k8s.io/kube-openapi v0.0.0-20200121204235-bf4fb3bd569c // indirect
+	k8s.io/utils v0.0.0-20200324210504-a9aa75ae1b89 // indirect
+	sigs.k8s.io/structured-merge-diff/v3 v3.0.0 // indirect
+	sigs.k8s.io/yaml v1.2.0 // indirect
 )

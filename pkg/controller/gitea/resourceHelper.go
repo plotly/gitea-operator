@@ -4,7 +4,7 @@ import (
 	yaml "github.com/ghodss/yaml"
 	integreatlyv1alpha1 "github.com/plotly/gitea-operator/pkg/apis/integreatly/v1alpha1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
-	"k8s.io/apimachinery/pkg/runtime"
+	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
 type ResourceHelper struct {
@@ -19,7 +19,7 @@ func newResourceHelper(cr *integreatlyv1alpha1.Gitea) *ResourceHelper {
 	}
 }
 
-func (r *ResourceHelper) createResource(template string) (runtime.Object, error) {
+func (r *ResourceHelper) createResource(template string) (client.Object, error) {
 	tpl, err := r.templateHelper.loadTemplate(template)
 	if err != nil {
 		return nil, err

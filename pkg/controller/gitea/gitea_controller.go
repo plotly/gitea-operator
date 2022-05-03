@@ -9,6 +9,7 @@ import (
 	v12 "k8s.io/api/apps/v1"
 
 	integreatlyv1alpha1 "github.com/plotly/gitea-operator/pkg/apis/integreatly/v1alpha1"
+	constants "github.com/plotly/gitea-operator/pkg/controller/gitea/const"
 	"k8s.io/apimachinery/pkg/api/errors"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -113,7 +114,7 @@ func (r *ReconcileGitea) Reconcile(ctx context.Context, request reconcile.Reques
 func (r *ReconcileGitea) InstallDatabase(cr *integreatlyv1alpha1.Gitea) (reconcile.Result, error) {
 	log.Printf("Phase: Install Database")
 
-	for _, resourceName := range []string{GiteaServiceAccountName, GiteaPgServiceName, GiteaPgDeploymentName, GiteaPgPvcName} {
+	for _, resourceName := range []string{constants.GiteaServiceAccountName, constants.GiteaPgServiceName, constants.GiteaPgDeploymentName, constants.GiteaPgPvcName} {
 		if err := r.CreateResource(cr, resourceName); err != nil {
 			log.Printf("Error in InstallDatabase resourceName=%s : err=%s", resourceName, err)
 			// Requeue so it can be attempted again
@@ -143,7 +144,7 @@ func (r *ReconcileGitea) InstallGitea(cr *integreatlyv1alpha1.Gitea) (reconcile.
 	log.Printf("Phase: Install Gitea")
 
 	// Try create all gitea resources
-	for _, resourceName := range []string{GiteaServiceName, GiteaServiceSshName, GiteaReposPvcName, GiteaInitSecretName, GiteaAdminSecretName, GiteaConfigName, GiteaDeploymentName, GiteaIngressName} {
+	for _, resourceName := range []string{constants.GiteaServiceName, constants.GiteaServiceSshName, constants.GiteaReposPvcName, constants.GiteaInitSecretName, constants.GiteaAdminSecretName, constants.GiteaConfigName, constants.GiteaDeploymentName, constants.GiteaIngressName} {
 		if err := r.CreateResource(cr, resourceName); err != nil {
 			log.Printf("Error in InstallGitea resourceName=%s : err=%s", resourceName, err)
 			// Requeue so it can be attempted again
@@ -156,7 +157,7 @@ func (r *ReconcileGitea) InstallGitea(cr *integreatlyv1alpha1.Gitea) (reconcile.
 
 func (r *ReconcileGitea) UpdatePhase(cr *integreatlyv1alpha1.Gitea, phase int) error {
 	cr.Status.Phase = phase
-	cr.Status.Version = GiteaVersion
+	cr.Status.Version = constants.GiteaVersion
 	return r.client.Update(context.TODO(), cr)
 }
 
@@ -223,7 +224,7 @@ func (r *ReconcileGitea) CreateResource(cr *integreatlyv1alpha1.Gitea, resourceN
 func (r *ReconcileGitea) UpdateGitea(cr *integreatlyv1alpha1.Gitea) (reconcile.Result, error) {
 	selector := types.NamespacedName{
 		Namespace: cr.Namespace,
-		Name:      GiteaDeploymentName,
+		Name:      constants.GiteaDeploymentName,
 	}
 
 	deployment := v12.Deployment{}
@@ -237,7 +238,7 @@ func (r *ReconcileGitea) UpdateGitea(cr *integreatlyv1alpha1.Gitea) (reconcile.R
 		return reconcile.Result{RequeueAfter: RequeueDelay}, nil
 	}
 
-	expectedImage := fmt.Sprintf("%s:%s", GiteaImage, GiteaVersion)
+	expectedImage := fmt.Sprintf("%s:%s", constants.GiteaImage, constants.GiteaVersion)
 	currentImage := deployment.Spec.Template.Spec.Containers[0].Image
 
 	if currentImage != expectedImage {
@@ -249,4 +250,16 @@ func (r *ReconcileGitea) UpdateGitea(cr *integreatlyv1alpha1.Gitea) (reconcile.R
 
 	log.Print("Gitea image is up to date: ", currentImage)
 	return reconcile.Result{RequeueAfter: RequeueDelay}, nil
+}
+
+var Templates = []string{
+	constants.GiteaServiceAccountName,
+	constants.GiteaConfigName,
+	constants.GiteaPgPvcName,
+	constants.GiteaReposPvcName,
+	constants.GiteaDeploymentName,
+	constants.GiteaIngressName,
+	constants.GiteaServiceName,
+	constants.GiteaPgDeploymentName,
+	constants.GiteaPgServiceName,
 }
