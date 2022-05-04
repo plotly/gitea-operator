@@ -6,10 +6,6 @@ metadata:
   name: {{ .GiteaPgDeploymentName }}
   namespace: {{ .ApplicationNamespace }}
 spec:
-  securityContext:
-    runAsUser: 26
-    runAsGroup: 26
-    fsGroup: 26
   replicas: 1
   selector:
     matchLabels:
@@ -22,6 +18,10 @@ spec:
         name: {{ .GiteaPgDeploymentName }}
       name: {{ .GiteaPgDeploymentName }}
     spec:
+      securityContext:
+        runAsUser: 26
+        runAsGroup: 26
+        fsGroup: 26
       serviceAccountName: {{ .GiteaServiceAccountName }}
       containers:
       - env:
