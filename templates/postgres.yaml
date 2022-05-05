@@ -18,6 +18,10 @@ spec:
         name: {{ .GiteaPgDeploymentName }}
       name: {{ .GiteaPgDeploymentName }}
     spec:
+      securityContext:
+        runAsUser: 26
+        runAsGroup: 26
+        fsGroup: 26
       serviceAccountName: {{ .GiteaServiceAccountName }}
       containers:
       - env:
