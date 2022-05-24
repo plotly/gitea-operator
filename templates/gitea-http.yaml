@@ -14,9 +14,6 @@ spec:
     port: 3000
     protocol: TCP
     targetPort: 3000
-  clusterIP: None
-  clusterIPs:
-  - None
   externalName: {{ .Hostname }}
   selector:
     app: {{ .ApplicationName }}
