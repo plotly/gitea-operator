@@ -118,7 +118,7 @@ func newTemplateHelper(cr *integreatlyv1alpha1.Gitea) *GiteaTemplateHelper {
 		GiteaVersion:            GiteaVersion,
 		// TODO change those value for production
 		GiteaVolumeCapacity: "1Gi",
-		DbVolumeCapacity:    "1Gi",
+		DbVolumeCapacity:    "4Gi",
 	}
 
 	templatePath := os.Getenv("TEMPLATE_PATH")
