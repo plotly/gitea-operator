@@ -37,6 +37,9 @@ stringData:
     DISABLE_GIT_HOOKS = false
     INSTALL_LOCK = true
 
+    [git]
+    PATH = /usr/bin/git_2.47-r0/git
+
     [server]
     APP_DATA_PATH = /data
     DOMAIN = {{ .Hostname }}
